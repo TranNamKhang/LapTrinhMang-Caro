@@ -201,3 +201,26 @@ class CaroClient:
         else:
             # Unknown/unsupported
             self.add_chat(f"[server] {line.strip()}")
+
+    # ===== UI interactions =====
+    def on_click(self, event):
+        if not self.turn or self.sock is None:
+            return
+        x, y = self.pixel_to_board(event.x, event.y)
+        if not (0 <= x < BOARD_SIZE and 0 <= y < BOARD_SIZE):
+            return
+        if self.board[y][x] is not None:
+            return
+        try:
+            self.sock.sendall(f"MOVE {x} {y}\n".encode())
+        except Exception as e:
+            messagebox.showerror("Error", f"Send failed: {e}")
+
+    def reset_board(self, clear_status=True):
+        # Xóa dấu X/O nhưng giữ grid
+        self.canvas.delete("all")
+        self.draw_grid()
+        self.board = [[None for _ in range(BOARD_SIZE)] for _ in range(BOARD_SIZE)]
+        if clear_status:
+            self.status.set("Board reset (local). Waiting or start new game.")
+        # Lượt không thay đổi trừ khi server START/RESULT
