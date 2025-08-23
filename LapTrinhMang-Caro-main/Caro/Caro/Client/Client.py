@@ -104,3 +104,27 @@ class CaroClient:
             messagebox.showerror("Error", f"Cannot connect: {e}")
             self.sock = None
             return
+
+        # Bắt đầu luồng nhận dữ liệu
+        threading.Thread(target=self.recv_loop, daemon=True).start()
+
+    def recv_loop(self):
+        try:
+            buf = ""
+            while True:
+                data = self.sock.recv(1024)
+                if not data:
+                    break
+                buf += data.decode(errors="ignore")
+                while "\n" in buf:
+                    line, buf = buf.split("\n", 1)
+                    self.master.after(0, self.handle_line, line)
+        except Exception:
+            pass
+        finally:
+            self.master.after(0, self.on_disconnected)
+
+    def on_disconnected(self):
+        self.turn = False
+        self.status.set("Disconnected")
+        self.add_chat("[system] Disconnected from server.")
