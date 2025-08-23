@@ -86,3 +86,21 @@ class CaroClient:
             self.canvas.create_line(px - offset, py + offset, px + offset, py - offset, width=2)
         else:
             self.canvas.create_oval(px - offset, py - offset, px + offset, py + offset, width=2)
+
+    # ===== Networking =====
+    def connect(self):
+        if self.sock:
+            self.status.set("Already connected")
+            return
+        host = simpledialog.askstring("Server IP", "Enter server IP (default: localhost):")
+        if not host:
+            host = "127.0.0.1"
+
+        try:
+            self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            self.sock.connect((host, PORT))
+            self.status.set(f"Connected to {host}:{PORT}. Waiting for opponent...")
+        except Exception as e:
+            messagebox.showerror("Error", f"Cannot connect: {e}")
+            self.sock = None
+            return
