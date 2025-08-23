@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36408.4 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "NetworkingCaro", "NetworkingCaro\NetworkingCaro.pyproj", "{FC5D66D5-69F4-4C65-A946-AF3D5F0BC652}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FC5D66D5-69F4-4C65-A946-AF3D5F0BC652}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC5D66D5-69F4-4C65-A946-AF3D5F0BC652}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8CA106B8-6BD9-4BF3-98D9-157C3EEE777F}
+	EndGlobalSection
+EndGlobal
