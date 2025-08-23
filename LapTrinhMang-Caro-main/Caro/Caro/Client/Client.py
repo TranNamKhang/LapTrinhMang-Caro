@@ -1,4 +1,5 @@
-﻿import socket
+﻿#!/usr/bin/env python3
+import socket
 import threading
 import tkinter as tk
 from tkinter import messagebox, simpledialog
@@ -224,3 +225,29 @@ class CaroClient:
         if clear_status:
             self.status.set("Board reset (local). Waiting or start new game.")
         # Lượt không thay đổi trừ khi server START/RESULT
+
+    # ===== Chat =====
+    def send_chat(self, event=None):
+        text = self.chat_entry.get().strip()
+        if not text or self.sock is None:
+            return
+        try:
+            # Gửi dạng "CHAT <text>"
+            self.sock.sendall(f"CHAT {text}\n".encode())
+            self.chat_entry.delete(0, tk.END)
+        except Exception as e:
+            messagebox.showerror("Error", f"Chat send failed: {e}")
+
+    def add_chat(self, text):
+        self.chat_box.config(state=tk.NORMAL)
+        self.chat_box.insert(tk.END, text + "\n")
+        self.chat_box.config(state=tk.DISABLED)
+        self.chat_box.see(tk.END)
+
+def main():
+    root = tk.Tk()
+    app = CaroClient(root)
+    root.mainloop()
+
+if __name__ == "__main__":
+    main()
