@@ -190,3 +190,14 @@ class CaroClient:
                 self.add_chat("[result] Opponent left the game.")
             self.turn = False
             self.status.set("Game over")
+        elif cmd == "CHAT":
+            # CHAT <message ...>
+            msg_text = line.strip()[len("CHAT"):].strip()
+            if msg_text:
+                self.add_chat(msg_text)
+        elif cmd == "ERR":
+            self.status.set("Error: " + " ".join(parts[1:]))
+            self.add_chat("[error] " + " ".join(parts[1:]))
+        else:
+            # Unknown/unsupported
+            self.add_chat(f"[server] {line.strip()}")
