@@ -128,3 +128,65 @@ class CaroClient:
         self.turn = False
         self.status.set("Disconnected")
         self.add_chat("[system] Disconnected from server.")
+
+    # ===== Protocol handling =====
+    def handle_line(self, line: str):
+        parts = line.strip().split()
+        if not parts:
+            return
+        cmd = parts[0].upper()
+
+        if cmd == "CONNECTED":
+            # optional greeting from server
+            self.add_chat("[server] connected")
+        elif cmd == "STATUS":
+            self.status.set(" ".join(parts[1:]))
+        elif cmd == "START" and len(parts) == 2:
+            # START X or START O
+            self.my_mark = parts[1]
+            self.turn = (self.my_mark == "X")  # X đi trước
+            self.reset_board(clear_status=False)
+            self.status.set(f"You are {self.my_mark}. {'Your turn' if self.turn else 'Opponent turn'}")
+            self.add_chat(f"[server] Game started. You are {self.my_mark}.")
+        elif cmd == "YOUR_TURN":
+            self.turn = True
+            self.status.set(f"Your turn ({self.my_mark})")
+        elif cmd == "WAIT":
+            self.turn = False
+            self.status.set("Opponent's turn")
+        elif cmd == "OK" and len(parts) >= 4 and parts[1].upper() == "MOVE":
+            # OK MOVE x y  -> nước đi của chính mình được xác nhận
+            try:
+                x, y = int(parts[2]), int(parts[3])
+            except Exception:
+                return
+            self.board[y][x] = self.my_mark
+            self.draw_mark(x, y, self.my_mark)
+            self.turn = False
+        elif cmd == "OPPONENT_MOVE" and len(parts) == 3:
+            # OPPONENT_MOVE x y
+            try:
+                x, y = int(parts[1]), int(parts[2])
+            except Exception:
+                return
+            opp_mark = "O" if self.my_mark == "X" else "X"
+            self.board[y][x] = opp_mark
+            self.draw_mark(x, y, opp_mark)
+            self.turn = True
+            self.status.set(f"Your turn ({self.my_mark})")
+        elif cmd == "RESULT" and len(parts) >= 2:
+            res = parts[1].upper()
+            if res == "WIN":
+                messagebox.showinfo("Result", "You win!")
+                self.add_chat("[result] You win!")
+            elif res == "LOSE":
+                messagebox.showinfo("Result", "You lose!")
+                self.add_chat("[result] You lose!")
+            elif res == "DRAW":
+                messagebox.showinfo("Result", "Draw!")
+                self.add_chat("[result] Draw")
+            elif res == "OPPONENT_LEFT":
+                messagebox.showwarning("Result", "Opponent disconnected.")
+                self.add_chat("[result] Opponent left the game.")
+            self.turn = False
+            self.status.set("Game over")
