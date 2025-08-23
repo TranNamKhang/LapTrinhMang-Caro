@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36408.4 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CaroServer", "CaroServer\CaroServer.csproj", "{CA3473C2-06B8-4E72-84F9-DECC718DBC68}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CaroClient", "CaroClient\CaroClient.csproj", "{AE25364F-CBF4-4B6F-B77B-9DBDDEB7264E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CA3473C2-06B8-4E72-84F9-DECC718DBC68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA3473C2-06B8-4E72-84F9-DECC718DBC68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA3473C2-06B8-4E72-84F9-DECC718DBC68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA3473C2-06B8-4E72-84F9-DECC718DBC68}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE25364F-CBF4-4B6F-B77B-9DBDDEB7264E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE25364F-CBF4-4B6F-B77B-9DBDDEB7264E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE25364F-CBF4-4B6F-B77B-9DBDDEB7264E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE25364F-CBF4-4B6F-B77B-9DBDDEB7264E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {08F83F70-8BDA-4F0F-933E-E8EADE2D9DB8}
+	EndGlobalSection
+EndGlobal

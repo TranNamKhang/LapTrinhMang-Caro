@@ -1,0 +1,14 @@
+C:\Users\lethi\source\repos\CaroServer\CaroServer\bin\Debug\net8.0\CaroServer.exe
+C:\Users\lethi\source\repos\CaroServer\CaroServer\bin\Debug\net8.0\CaroServer.deps.json
+C:\Users\lethi\source\repos\CaroServer\CaroServer\bin\Debug\net8.0\CaroServer.runtimeconfig.json
+C:\Users\lethi\source\repos\CaroServer\CaroServer\bin\Debug\net8.0\CaroServer.dll
+C:\Users\lethi\source\repos\CaroServer\CaroServer\bin\Debug\net8.0\CaroServer.pdb
+C:\Users\lethi\source\repos\CaroServer\CaroServer\obj\Debug\net8.0\CaroServer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\lethi\source\repos\CaroServer\CaroServer\obj\Debug\net8.0\CaroServer.AssemblyInfoInputs.cache
+C:\Users\lethi\source\repos\CaroServer\CaroServer\obj\Debug\net8.0\CaroServer.AssemblyInfo.cs
+C:\Users\lethi\source\repos\CaroServer\CaroServer\obj\Debug\net8.0\CaroServer.csproj.CoreCompileInputs.cache
+C:\Users\lethi\source\repos\CaroServer\CaroServer\obj\Debug\net8.0\CaroServer.dll
+C:\Users\lethi\source\repos\CaroServer\CaroServer\obj\Debug\net8.0\refint\CaroServer.dll
+C:\Users\lethi\source\repos\CaroServer\CaroServer\obj\Debug\net8.0\CaroServer.pdb
+C:\Users\lethi\source\repos\CaroServer\CaroServer\obj\Debug\net8.0\CaroServer.genruntimeconfig.cache
+C:\Users\lethi\source\repos\CaroServer\CaroServer\obj\Debug\net8.0\ref\CaroServer.dll
